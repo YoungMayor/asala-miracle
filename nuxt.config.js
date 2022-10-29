@@ -1,13 +1,16 @@
 import colors from 'vuetify/es5/util/colors'
 
 export default {
+    // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
+    ssr: false,
+
     // Target: https://go.nuxtjs.dev/config-target
     target: 'static',
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        titleTemplate: '%s - asala-miracle',
-        title: 'asala-miracle',
+        titleTemplate: '%s - Asala Miracle',
+        title: 'Mimx',
         meta: [
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,15 +26,28 @@ export default {
     css: [],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-    plugins: [],
+    plugins: [
+        '@/plugins/module-injections.js',
+        '@/plugins/helper.js',
+        '@/plugins/form.js',
+        '@/plugins/validator.js',
+        '@/plugins/axios.js',
+    ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
     components: true,
+
+    loadingIndicator: {
+        name: 'rectangle-bounce',
+        color: '#f0ad4b',
+        background: '#003b39'
+    },
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
     buildModules: [
         // https://go.nuxtjs.dev/vuetify
         '@nuxtjs/vuetify',
+        '@nuxtjs/google-fonts',
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
@@ -44,20 +60,47 @@ export default {
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
-        // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-        baseURL: '/',
+        baseURL: process.env.NUXT_ENV_BACKEND_URL,
+        // credentials: true,
+        progress: true,
+        headers: {
+            common: {
+                'X-Requested-With': 'XMLHttpRequest',
+                'Accept': 'application/json'
+            }
+        }
+    },
+
+    // PWA module configuration: https://go.nuxtjs.dev/pwa
+    googleFonts: {
+        // families: {
+        //     Poppins: true
+        // },
     },
 
     // PWA module configuration: https://go.nuxtjs.dev/pwa
     pwa: {
+        // icon: {
+        //     fileName: 'icon_round.png'
+        // },
+        meta: {
+            name: 'Asala Miracle',
+            author: 'Meyoron Aghogho <youngmayor.dev@gmail.com>',
+            theme_color: '#388581'
+        },
         manifest: {
-            lang: 'en'
+            name: 'Asala Miracle',
+            lang: 'en',
+            // useWebmanifestExtension: false,
+            short_name: 'Mimx',
+            background_color: '#388581'
         }
     },
 
     // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
     vuetify: {
         customVariables: ['~/assets/variables.scss'],
+        treeShake: true,
         theme: {
             dark: true,
             themes: {
@@ -75,5 +118,7 @@ export default {
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
-    build: {}
+    build: {
+        postcss: null,
+    }
 }
