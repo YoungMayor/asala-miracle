@@ -1,118 +1,160 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
+    <v-app dark>
+        <v-app-bar
+            fixed
+            app
+            xxxcolor="#00000052"
+            class="semi-transparent-dark bg-blur"
+            xxxflat
+            elevate-on-scroll
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar
-      :clipped-left="clipped"
-      fixed
-      app
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-btn
-        icon
-        @click.stop="miniVariant = !miniVariant"
-      >
-        <v-icon>mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="clipped = !clipped"
-      >
-        <v-icon>mdi-application</v-icon>
-      </v-btn>
-      <v-btn
-        icon
-        @click.stop="fixed = !fixed"
-      >
-        <v-icon>mdi-minus</v-icon>
-      </v-btn>
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
-      <v-spacer />
-      <v-btn
-        icon
-        @click.stop="rightDrawer = !rightDrawer"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <Nuxt />
-      </v-container>
-    </v-main>
-    <v-navigation-drawer
-      v-model="rightDrawer"
-      :right="right"
-      temporary
-      fixed
-    >
-      <v-list>
-        <v-list-item @click.native="right = !right">
-          <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
-          </v-list-item-action>
-          <v-list-item-title>Switch drawer (click me)</v-list-item-title>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-footer
-      :absolute="!fixed"
-      app
-    >
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
-  </v-app>
+            <nuxt-link
+                to="/"
+                class="d-flex mx-auto"
+                :style="{
+                    maxWidth: '45vw',
+                }"
+            >
+                <InscriptionAcme
+                    :fill="$vuetify.theme.isDark ? '#f8f5ff' : '#181129'"
+                />
+            </nuxt-link>
+
+            <template v-if="!screenIsSmall">
+                <v-spacer />
+
+                <template>
+                    <v-btn
+                        v-for="(item, i) in items"
+                        :key="i"
+                        class="ma-1"
+                        color="transparent"
+                        dark
+                        :to="item.to"
+                    >
+                        <v-icon small left> {{ item.icon }} </v-icon>
+
+                        <span> {{ item.title }} </span>
+                    </v-btn>
+                </template>
+            </template>
+
+            <template v-slot:extension v-if="screenIsSmall">
+                <v-tabs centered show-arrows optional>
+                    <v-tabs-slider color="white"></v-tabs-slider>
+
+                    <v-tab
+                        v-for="(item, i) in items"
+                        :key="i"
+                        :to="item.to"
+                        exact
+                    >
+                        <v-icon small left> {{ item.icon }} </v-icon>
+
+                        <span> {{ item.title }} </span>
+                    </v-tab>
+                </v-tabs>
+            </template>
+
+            <!-- <v-btn class="ma-1" color="primary_gradient" dark small>
+                <v-icon left> mdi-download </v-icon>
+                <span> Download CV </span>
+            </v-btn> -->
+        </v-app-bar>
+
+        <v-main>
+            <v-container>
+                <Nuxt />
+            </v-container>
+        </v-main>
+
+        <v-footer dark class="px-6 py-16">
+            <div>
+                <div class="grey--text text-caption text-center">
+                    I can be reached via my social handles below
+                </div>
+
+                <v-row justify="center" dense class="pa-2">
+                    <v-col
+                        v-for="(link, index) in $profile.links"
+                        :key="index"
+                        cols="auto"
+                    >
+                        <v-btn
+                            plain
+                            :color="link.color"
+                            small
+                            :href="link.link"
+                            target="_blank"
+                        >
+                            <span>
+                                {{ link.label }}
+                            </span>
+
+                            <v-icon right small> mdi-open-in-new </v-icon>
+                        </v-btn>
+                    </v-col>
+
+                    <v-col cols="12" class="mt-2">
+                        <v-btn
+                            block
+                            plain
+                            :href="`mailto:${$profile.email}`"
+                            target="_blank"
+                        >
+                            <span>
+                                {{ $profile.email }}
+                            </span>
+
+                            <v-icon right small> mdi-email-edit </v-icon>
+                        </v-btn>
+                    </v-col>
+                </v-row>
+            </div>
+        </v-footer>
+    </v-app>
 </template>
 
 <script>
 export default {
-  name: 'DefaultLayout',
-  data () {
-    return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+    name: "DefaultLayout",
+
+    data() {
+        return {
+            items: [
+                {
+                    icon: "mdi-account",
+                    title: "About",
+                    to: "/about",
+                },
+                // {
+                //     icon: "mdi-apps",
+                //     title: "Skills",
+                //     to: "/#skills",
+                // },
+                {
+                    icon: "mdi-brush",
+                    title: "Designs",
+                    to: "/designs",
+                },
+                // {
+                //     icon: "mdi-apps",
+                //     title: "Reviews",
+                //     to: "/#reviews",
+                // },
+                {
+                    icon: "mdi-email-fast",
+                    title: "Contact",
+                    to: "/contact",
+                },
+            ],
+        };
+    },
+
+    computed: {
+        screenIsSmall() {
+            return this.$vuetify.breakpoint.xs;
         },
-        {
-          icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
-        }
-      ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
-      title: 'Vuetify.js'
-    }
-  }
-}
+    },
+};
 </script>

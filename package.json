@@ -33,6 +33,7 @@
         "collect.js": "^4.34.3",
         "copy-to-clipboard": "^3.3.2",
         "core-js": "^3.25.3",
+        "fitty": "^2.3.6",
         "lodash": "^4.17.21",
         "moment": "^2.29.4",
         "nuxt": "^2.15.8",
@@ -42,6 +43,7 @@
         "vuetify": "^2.6.10"
     },
     "devDependencies": {
+        "@faker-js/faker": "^7.6.0",
         "@nuxtjs/google-fonts": "^3.0.0-1",
         "@nuxtjs/vuetify": "^1.12.3"
     },

@@ -1,83 +1,140 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <v-card class="logo py-4 d-flex justify-center">
-        <NuxtLogo />
-        <VuetifyLogo />
-      </v-card>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
+    <div>
+        <section
+            id="introduction"
+            :xxxstyle="{
+                height: `calc(90vh - ${this.$vuetify.application.top}px)`,
+                maxHeight: '400px',
+            }"
+            class="d-flex py-16"
+        >
+            <div class="align-self-end mt-16">
+                <div class="text-h1 font-weight-bold mt-16">
+                    hi, I'm {{ $profile.name }}.
+                </div>
+
+                <div class="job-title-text grey--text mt-4">
+                    {{ $profile.job_title }}
+                </div>
+
+                <div class="mt-2">
+                    <v-btn color="primary" outlined to="/about" rounded>
+                        <span> Read More </span>
+
+                        <v-icon right> mdi-arrow-right </v-icon>
+                    </v-btn>
+                </div>
+
+                <!-- <v-row
+                    class="mx-auto"
+                    justify="space-around"
+                    :style="{
+                        maxWidth: '500px',
+                    }"
+                >
+                    <v-col
+                        v-for="([brand, label], index) in $profile.brands"
+                        :key="index"
+                        cols="3"
+                        class="d-flex flex-column align-center"
+                    >
+                        <component
+                            :is="`brand-${brand}`"
+                            fill="grey"
+                            :style="{
+                                maxWidth: '50%',
+                                height: 'auto',
+                            }"
+                        ></component>
+
+                        <span
+                            class="
+                                text-caption
+                                grey--text
+                                font-weight-bold
+                                pa-2
+                            "
+                        >
+                            {{ label }}
+                        </span>
+                    </v-col>
+                </v-row> -->
+            </div>
+        </section>
+
+        <section id="top-works" class="px-2 py-16">
+            <div
+                class="
+                    text-h3
+                    grey--text
+                    font-weight-medium
+                    mb-4
+                    d-flex
+                    align-baseline
+                    justify-space-between
+                "
             >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
-          </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+                <span> Designs </span>
+
+                <v-btn small plain>
+                    <span> View All </span>
+
+                    <v-icon small right> mdi-arrow-right </v-icon>
+                </v-btn>
+            </div>
+
+            <v-row>
+                <v-col
+                    v-for="(design, index) in $profile.designs"
+                    :key="index"
+                    cols="12"
+                    sm="6"
+                >
+                    <v-hover>
+                        <template v-slot:default="{ hover }">
+                            <v-card class="ma-md-4">
+                                <v-img
+                                    :src="design.image"
+                                    height="320px"
+                                ></v-img>
+
+                                <v-fade-transition>
+                                    <v-overlay
+                                        v-if="hover"
+                                        absolute
+                                        color="#000"
+                                        :opacity="0.7"
+                                    >
+                                        <v-card-title>
+                                            {{ design.title }}
+                                        </v-card-title>
+
+                                        <v-card-text>
+                                            {{ design.text }}
+                                        </v-card-text>
+                                    </v-overlay>
+                                </v-fade-transition>
+                            </v-card>
+                        </template>
+                    </v-hover>
+                </v-col>
+            </v-row>
+        </section>
+    </div>
 </template>
 
 <script>
 export default {
-  name: 'IndexPage'
-}
+    name: "IndexPage",
+
+    data() {
+        return {
+            //
+        };
+    },
+
+    computed: {
+        //
+    },
+};
 </script>

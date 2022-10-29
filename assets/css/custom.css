@@ -1,0 +1,27 @@
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    word-break: keep-all !important;
+}
+
+.bg-blur {
+    backdrop-filter: blur(3px) !important;
+    -webkit-backdrop-filter: blur(3px) !important;
+}
+
+.bg-blur-double {
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+}
+
+.semi-transparent {
+    background-color: #ffffffa3 !important;
+    border-color: #ffffffa3 !important;
+}
+
+.semi-transparent-dark {
+    background-color: #000000a3 !important;
+    border-color: #000000a3 !important;
+}

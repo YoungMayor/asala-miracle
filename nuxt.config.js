@@ -23,7 +23,9 @@ export default {
     },
 
     // Global CSS: https://go.nuxtjs.dev/config-css
-    css: [],
+    css: [
+        '@/assets/css/custom.css',
+    ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
@@ -32,6 +34,7 @@ export default {
         '@/plugins/form.js',
         '@/plugins/validator.js',
         '@/plugins/axios.js',
+        '@/plugins/profile.js',
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
