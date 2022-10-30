@@ -15,7 +15,14 @@
             </div>
 
             <div class="mt-1">
-                <v-btn color="white" text outlined to="/about" rounded small>
+                <v-btn
+                    color="white"
+                    text
+                    outlined
+                    to="/#about-summary"
+                    rounded
+                    small
+                >
                     <span> Read More About Me </span>
 
                     <v-icon small right> mdi-arrow-right </v-icon>

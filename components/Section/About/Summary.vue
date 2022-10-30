@@ -1,5 +1,12 @@
 <template>
-    <section id="about-summary" class="px-6 py-16">
+    <section
+        id="about-summary"
+        class="px-6"
+        :style="{
+            paddingTop: `${$vuetify.application.top}px`,
+            paddingBottom: `${$vuetify.application.top}px`,
+        }"
+    >
         <v-row justify="center">
             <v-col cols="12" sm="6" md="5" xl="4">
                 <div class="hey-text text-h5">Hey There!</div>

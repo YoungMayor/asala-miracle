@@ -132,7 +132,7 @@ export default {
                 {
                     icon: "mdi-account",
                     title: "About",
-                    to: "/about",
+                    to: "/#about-summary",
                 },
                 // {
                 //     icon: "mdi-apps",
@@ -142,7 +142,7 @@ export default {
                 {
                     icon: "mdi-brush",
                     title: "Designs",
-                    to: "/designs",
+                    to: "/#top-designs",
                 },
                 // {
                 //     icon: "mdi-apps",
@@ -152,7 +152,7 @@ export default {
                 {
                     icon: "mdi-email-fast",
                     title: "Contact",
-                    to: "/contact",
+                    to: "/#contact-form",
                 },
             ],
         };
