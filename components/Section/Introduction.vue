@@ -1,10 +1,10 @@
 <template>
     <section
         id="introduction"
+        class="d-flex px-4"
         :style="{
             minHeight: `calc(100vh - ${$vuetify.application.top}px)`,
         }"
-        class="d-flex"
     >
         <div class="align-self-center">
             <div class="font-weight-bold">

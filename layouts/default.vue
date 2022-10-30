@@ -18,44 +18,7 @@
                 />
             </nuxt-link>
 
-            <template v-if="!screenIsSmall">
-                <v-spacer />
-
-                <template>
-                    <v-btn
-                        v-for="(item, i) in items"
-                        :key="i"
-                        class="ma-1"
-                        color="transparent"
-                        dark
-                        :to="item.to"
-                    >
-                        <v-icon small left> {{ item.icon }} </v-icon>
-
-                        <span> {{ item.title }} </span>
-                    </v-btn>
-                </template>
-            </template>
-
-            <template v-slot:extension v-if="screenIsSmall">
-                <v-tabs
-                    centered
-                    show-arrows
-                    optional
-                    slider-color="grey darken-4"
-                >
-                    <v-tab
-                        v-for="(item, i) in items"
-                        :key="i"
-                        :to="item.to"
-                        active-class="tab-active secondary--text"
-                    >
-                        <v-icon small left> {{ item.icon }} </v-icon>
-
-                        <span> {{ item.title }} </span>
-                    </v-tab>
-                </v-tabs>
-            </template>
+            <v-spacer v-if="!$vuetify.breakpoint.xs" />
         </v-app-bar>
 
         <v-main>
@@ -125,49 +88,6 @@
 <script>
 export default {
     name: "DefaultLayout",
-
-    data() {
-        return {
-            items: [
-                {
-                    icon: "mdi-account",
-                    title: "About",
-                    to: "/#about-summary",
-                },
-                // {
-                //     icon: "mdi-apps",
-                //     title: "Skills",
-                //     to: "/#skills",
-                // },
-                {
-                    icon: "mdi-brush",
-                    title: "Designs",
-                    to: "/#top-designs",
-                },
-                // {
-                //     icon: "mdi-apps",
-                //     title: "Reviews",
-                //     to: "/#reviews",
-                // },
-                {
-                    icon: "mdi-email-fast",
-                    title: "Contact",
-                    to: "/#contact-form",
-                },
-            ],
-        };
-    },
-
-    computed: {
-        screenIsSmall() {
-            return this.$vuetify.breakpoint.xs;
-        },
-    },
 };
 </script>
 
-<style scoped>
-.tab-active {
-    background-color: #121212;
-}
-</style>

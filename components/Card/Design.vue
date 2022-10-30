@@ -10,6 +10,7 @@
                         absolute
                         color="#000"
                         :opacity="0.7"
+                        z-index="1"
                     >
                         <v-card-title>
                             {{ design.title }}
