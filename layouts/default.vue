@@ -5,6 +5,7 @@
             app
             class="semi-transparent-dark bg-blur"
             elevate-on-scroll
+            height="64"
         >
             <nuxt-link
                 to="/"

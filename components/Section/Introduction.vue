@@ -50,6 +50,33 @@
                     <v-icon small right> mdi-arrow-down </v-icon>
                 </v-btn>
             </div>
+
+            <div
+                class="
+                    job-title-text
+                    grey--text
+                    mt-12
+                    text-h6
+                    font-weight-regular
+                "
+            >
+                Got a job for me?
+            </div>
+
+            <div class="mt-1">
+                <v-btn
+                    color="white"
+                    text
+                    outlined
+                    to="/#contact-form"
+                    rounded
+                    small
+                >
+                    <span> Contact Me </span>
+
+                    <v-icon small right> mdi-email-fast </v-icon>
+                </v-btn>
+            </div>
         </div>
     </section>
 </template>
