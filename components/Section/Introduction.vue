@@ -10,7 +10,7 @@
             <div class="font-weight-bold">
                 <span class="text-h2 font-weight-bold"> hi, I'm </span>
                 <span class="text-h1 font-weight-bold primary--text">
-                    {{ $profile.name }}.
+                    {{ $profile.nickname }}.
                 </span>
             </div>
 

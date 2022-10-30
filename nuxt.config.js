@@ -42,8 +42,8 @@ export default {
 
     loadingIndicator: {
         name: 'rectangle-bounce',
-        color: '#f0ad4b',
-        background: '#003b39'
+        color: colors.amber.darken3,
+        background: '#121212'
     },
 
     // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
@@ -89,14 +89,14 @@ export default {
         meta: {
             name: 'Asala Miracle',
             author: 'Meyoron Aghogho <youngmayor.dev@gmail.com>',
-            theme_color: '#388581'
+            theme_color: '#121212'
         },
         manifest: {
             name: 'Asala Miracle',
             lang: 'en',
             // useWebmanifestExtension: false,
             short_name: 'Mimx',
-            background_color: '#388581'
+            background_color: '#121212'
         }
     },
 

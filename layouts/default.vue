@@ -38,14 +38,17 @@
             </template>
 
             <template v-slot:extension v-if="screenIsSmall">
-                <v-tabs centered show-arrows optional>
-                    <v-tabs-slider color="secondary"></v-tabs-slider>
-
+                <v-tabs
+                    centered
+                    show-arrows
+                    optional
+                    slider-color="grey darken-4"
+                >
                     <v-tab
                         v-for="(item, i) in items"
                         :key="i"
                         :to="item.to"
-                        exact
+                        active-class="tab-active secondary--text"
                     >
                         <v-icon small left> {{ item.icon }} </v-icon>
 
@@ -162,3 +165,9 @@ export default {
     },
 };
 </script>
+
+<style scoped>
+.tab-active {
+    background-color: #121212;
+}
+</style>

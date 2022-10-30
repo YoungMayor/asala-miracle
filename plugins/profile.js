@@ -2,15 +2,18 @@ import { faker } from "@faker-js/faker";
 
 export default ({}, inject) => {
     inject('profile', {
-        name: "MimX",
+        name: "Miracle Asala",
+        nickname: "MimX",
+        personality_title: "Drummer, Guitarist, Swimmer and UI/UX Designer",
         job_title: "UI/UX Designer",
+        avatar: faker.image.people(480, 640),
         brands: [
             ["adobe-xd", "Adobe XD"],
             ["corel-draw", "CorelDraw"],
             ["figma", "Figma"],
             ["photoshop", "Photoshop"],
         ],
-        about: faker.lorem.paragraph(),
+        about: faker.lorem.paragraph(9),
         foot_about: faker.lorem.paragraph(),
         phone: faker.phone.number("+234### ### ####"),
         email: faker.internet.email('Asala', 'Miracle', 'gmail.com'),
