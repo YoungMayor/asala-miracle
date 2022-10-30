@@ -3,9 +3,7 @@
         <v-app-bar
             fixed
             app
-            xxxcolor="#00000052"
             class="semi-transparent-dark bg-blur"
-            xxxflat
             elevate-on-scroll
         >
             <nuxt-link
@@ -41,7 +39,7 @@
 
             <template v-slot:extension v-if="screenIsSmall">
                 <v-tabs centered show-arrows optional>
-                    <v-tabs-slider color="white"></v-tabs-slider>
+                    <v-tabs-slider color="secondary"></v-tabs-slider>
 
                     <v-tab
                         v-for="(item, i) in items"
@@ -55,11 +53,6 @@
                     </v-tab>
                 </v-tabs>
             </template>
-
-            <!-- <v-btn class="ma-1" color="primary_gradient" dark small>
-                <v-icon left> mdi-download </v-icon>
-                <span> Download CV </span>
-            </v-btn> -->
         </v-app-bar>
 
         <v-main>
@@ -68,48 +61,59 @@
             </v-container>
         </v-main>
 
-        <v-footer dark class="px-6 py-16">
-            <div>
-                <div class="grey--text text-caption text-center">
-                    I can be reached via my social handles below
+        <v-footer dark class="px-12 py-16">
+            <div
+                class="mx-auto"
+                :style="{
+                    maxWidth: '400px',
+                }"
+            >
+                <div class="text-center">
+                    <InscriptionAcme />
                 </div>
 
-                <v-row justify="center" dense class="pa-2">
-                    <v-col
+                <div class="text-center grey--text text-caption mt-2">
+                    {{ $profile.foot_about }}
+                </div>
+
+                <div class="text-center mt-4">
+                    <v-btn
                         v-for="(link, index) in $profile.links"
                         :key="index"
-                        cols="auto"
+                        :icon="link.show == 'icon'"
+                        :plain="link.show == 'label'"
+                        :outlined="link.show == 'label'"
+                        :color="link.show == 'label' ? 'white' : link.color"
+                        :href="link.link"
+                        target="_blank"
+                        class="ma-2"
                     >
-                        <v-btn
-                            plain
-                            :color="link.color"
-                            small
-                            :href="link.link"
-                            target="_blank"
-                        >
-                            <span>
-                                {{ link.label }}
-                            </span>
+                        <span v-if="link.show == 'label'">
+                            {{ link.label }}
+                        </span>
 
-                            <v-icon right small> mdi-open-in-new </v-icon>
-                        </v-btn>
-                    </v-col>
+                        <v-icon v-if="link.show == 'icon'">
+                            {{ link.icon }}
+                        </v-icon>
+                    </v-btn>
+                </div>
+            </div>
+        </v-footer>
 
-                    <v-col cols="12" class="mt-2">
-                        <v-btn
-                            block
-                            plain
-                            :href="`mailto:${$profile.email}`"
-                            target="_blank"
-                        >
-                            <span>
-                                {{ $profile.email }}
-                            </span>
-
-                            <v-icon right small> mdi-email-edit </v-icon>
-                        </v-btn>
-                    </v-col>
-                </v-row>
+        <v-footer class="black">
+            <div class="copyright-text text-caption mx-auto">
+                Copyright &copy;2022
+                <a
+                    href="https://www.youngmayor.dev"
+                    target="_blank"
+                    class="
+                        secondary--text
+                        text-decoration-none
+                        font-weight-bold
+                    "
+                >
+                    Meyoron Aghogho
+                </a>
             </div>
         </v-footer>
     </v-app>

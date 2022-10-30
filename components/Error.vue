@@ -1,18 +1,11 @@
 <template>
     <div
-        class="
-            error-page
-            my-auto
-            full-body-height-no-header
-            ma-n3
-            d-flex
-            justify-center
-            align-center
-        "
+        class="error-page my-auto ma-n3 d-flex justify-center align-center"
         :style="{
             background: 'url(/layered-waves-haikei.svg)',
             backgroundSize: 'cover',
             backgroundPosition: 'bottom',
+            minHeight: `calc(100vh - ${$vuetify.application.top}px)`,
         }"
         v-bind="$attrs"
     >
@@ -77,7 +70,7 @@ export default {
         },
         action_text: {
             type: String,
-            default: "Go Back",
+            default: "Go Home",
         },
         action_path: {
             type: String,
