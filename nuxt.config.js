@@ -35,6 +35,7 @@ export default {
         '@/plugins/validator.js',
         '@/plugins/axios.js',
         '@/plugins/profile.js',
+        '@/plugins/slack.js',
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
