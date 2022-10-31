@@ -28,14 +28,6 @@ class Slack {
         }
     }
 
-    notify(text) {
-        return this.sendNotification({
-            attachments: [
-                { text, color: 'green' }
-            ]
-        })
-    }
-
     sendContactFormMessage(details) {
         return this.sendNotification({
             username: "MimX Message Alert",
@@ -60,8 +52,8 @@ class Slack {
                     fallback: "",
                     color: "#00D000",
                     fields: [{
-                        "title": "Content",
-                        "value": details.text,
+                        "title": "Message",
+                        "value": details.message,
                     }]
                 },
             ]
@@ -73,7 +65,7 @@ class Slack {
             email: faker.internet.email(),
             name: faker.name.fullName(),
             title: faker.lorem.paragraph(1),
-            text: faker.lorem.paragraph()
+            message: faker.lorem.paragraph()
         })
     }
 }

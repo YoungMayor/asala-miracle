@@ -162,7 +162,7 @@ class Validator {
 
     name(message) {
         return this.pattern(
-            /^[A-Z][a-zA-Z]{2,32}$/,
+            /^[A-Z][a-zA-Z\s]{2,32}$/,
             message ||
             "Name must begin with a capital letter and contain between 2 and 32 letters",
             'name'

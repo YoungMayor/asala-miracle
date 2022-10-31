@@ -24,6 +24,7 @@ export default {
 
     // Global CSS: https://go.nuxtjs.dev/config-css
     css: [
+        'sweetalert2/dist/sweetalert2.min.css',
         '@/assets/css/custom.css',
     ],
 
@@ -34,6 +35,7 @@ export default {
         '@/plugins/form.js',
         '@/plugins/validator.js',
         '@/plugins/axios.js',
+        '@/plugins/swal.js',
         '@/plugins/profile.js',
         '@/plugins/slack.js',
     ],

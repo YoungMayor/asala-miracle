@@ -15,7 +15,7 @@ export default ({}, inject) => {
         ],
         about: faker.lorem.paragraph(9),
         foot_about: faker.lorem.paragraph(),
-        phone: faker.phone.number("+234### ### ####"),
+        phone: faker.phone.number("+23480# ### ####"),
         email: faker.internet.email('Asala', 'Miracle', 'gmail.com'),
         skills: [{
                 name: "Figma",

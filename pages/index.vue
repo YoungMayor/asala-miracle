@@ -8,7 +8,7 @@
 
         <SectionTopDesigns />
 
-        <SectionContactForm />
+        <SectionContact />
     </div>
 </template>
 
