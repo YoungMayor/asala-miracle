@@ -1,6 +1,6 @@
 <template>
     <section
-        id="contact-form"
+        id="contact"
         class="px-2"
         :style="{
             paddingTop: `${$vuetify.application.top}px`,

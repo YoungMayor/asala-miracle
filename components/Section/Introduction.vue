@@ -68,7 +68,7 @@
                     color="white"
                     text
                     outlined
-                    to="/#contact-form"
+                    to="/#contact"
                     rounded
                     small
                 >
